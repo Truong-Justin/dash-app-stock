@@ -269,10 +269,12 @@ config = dict({'scrollZoom': True})
 
 
 
-app = Dash(__name__, meta_tags=[{'name': 'viewport', 
+stockApp = Dash(__name__, meta_tags=[{'name': 'viewport', 
                        'content':'width=device-width, initial-scale=1.0'}])
 
-app.layout = html.Div([
+app = stockApp.server
+
+stockApp.layout = html.Div([
     dcc.Graph(figure = fig, config = config,
 
               style = {'width': '99vw', 'height': '93vh'},
@@ -294,7 +296,7 @@ app.layout = html.Div([
              
 
 
-@app.callback(
+@stockApp.callback(
     Output("stockGraph", "figure"),
     Input("btnSubmit", "n_clicks"),
     State("userInput", "value"))
@@ -338,5 +340,5 @@ def update_figure(n, tickerChoice):
 
 
 if __name__ == '__main__':
-    app.run_server(debug = True)
+    stockApp.run_server(debug = True)
               
