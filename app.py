@@ -340,5 +340,5 @@ def update_figure(n, tickerChoice):
 
 
 if __name__ == '__main__':
-    stockApp.run_server(debug = True)
+    stockApp.run_server(debug = False)
               
