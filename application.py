@@ -224,7 +224,7 @@ def makeLevels(fig, stockDF):
 def findAbsMax(stockDF):
     absMax = 0
     for i in range(len(stockDF)):
-        if stockDF["Close"][i] > max:
+        if stockDF["Close"][i] > absMax:
             absMax = stockDF["Close"][i]
         
     return absMax
@@ -233,7 +233,7 @@ def findAbsMax(stockDF):
 def findAbsLow(stockDF):
     absLow = 50
     for i in range(len(stockDF)):
-        if stockDF["Close"][i] < low:
+        if stockDF["Close"][i] < absLow:
             absLow = stockDF["Close"][i]
 
     return absLow
