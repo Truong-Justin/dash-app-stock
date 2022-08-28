@@ -221,28 +221,30 @@ def makeLevels(fig, stockDF):
     return fig
 
 
-def findMax(stockDF):
-    max = 0
+def findAbsMax(stockDF):
+    absMax = 0
     for i in range(len(stockDF)):
         if stockDF["Close"][i] > max:
-            max = stockDF["Close"][i]
+            absMax = stockDF["Close"][i]
         
-    return max
+    return absMax
 
 
-def findLow(stockDF):
-    low = 50
+def findAbsLow(stockDF):
+    absLow = 50
     for i in range(len(stockDF)):
         if stockDF["Close"][i] < low:
-            low = stockDF["Close"][i]
+            absLow = stockDF["Close"][i]
 
-    return low
+    return absLow
 
 
-def makeFibLevels(max, low, fig, stockDF):
+def makeFibLevels(fig, stockDF):
     fibRatios = [.236, .382, .5, .618, .786, 1]
     fibLevels = []
-    dif = max - low
+    absMax = findAbsMax(stockDF)
+    absLow = findAbsLow(stockDF)
+    dif = absMax - absLow
 
     for i in range(len(fibRatios)):
         fibLevels.append(dif * fibRatios[i])
@@ -253,7 +255,7 @@ def makeFibLevels(max, low, fig, stockDF):
     #too close to the current last support/resistance;
     #We really are just looking for the last resistance level;
     fractal = fibLevels[-1] + (fibLevels[-1] * .17)
-    if (fibLevels[-1] < fractal) and (fractal < max):
+    if (fibLevels[-1] < fractal) and (fractal < absMax):
          fibLevels.append(fractal)  
     
 
@@ -380,7 +382,7 @@ def update_figure(n, tickerChoice):
     fig = makeCurrentPrice(fig, stockDF)
 
     #make and plot stock's resistance/support values using fibonacci retracement
-    fig = makeFibLevels(max, low, fig, stockDF)
+    fig = makeFibLevels(fig, stockDF)
 
     
     return fig
