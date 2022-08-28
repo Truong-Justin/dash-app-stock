@@ -221,6 +221,53 @@ def makeLevels(fig, stockDF):
     return fig
 
 
+def findMax(stockDF):
+    max = 0
+    for i in range(len(stockDF)):
+        if stockDF["Close"][i] > max:
+            max = stockDF["Close"][i]
+        
+    return max
+
+
+def findLow(stockDF):
+    low = 50
+    for i in range(len(stockDF)):
+        if stockDF["Close"][i] < low:
+            low = stockDF["Close"][i]
+
+    return low
+
+
+def makeFibLevels(max, low, fig, stockDF):
+    fibRatios = [.236, .382, .5, .618, .786, 1]
+    fibLevels = []
+    dif = max - low
+
+    for i in range(len(fibRatios)):
+        fibLevels.append(dif * fibRatios[i])
+
+
+    #for prices that are above the last resistance/support line within fibLevels,
+    #look to see if there can be any levels drawn using fractals that are also not 
+    #too close to the current last support/resistance;
+    #We really are just looking for the last resistance level;
+    fractal = fibLevels[-1] + (fibLevels[-1] * .17)
+    if (fibLevels[-1] < fractal) and (fractal < max):
+         fibLevels.append(fractal)  
+    
+
+    for i in range(len(fibLevels)):
+        fig.add_trace(go.Scatter(x = stockDF.index,
+                             y = [fibLevels[i] for val in range(len(stockDF))],
+                             line = dict(color = "black"),
+                             name = "Sup/Res: " + str(round(fibLevels[i], 2)),
+                             hoverinfo = "skip",
+                             opacity = 0.3))
+    
+    return fig
+
+
 def graphLayout(fig, choice):
     #Sets the layout of the graph and legend
     fig.update_layout(title_text = choice + ' Price Action', 
@@ -332,8 +379,8 @@ def update_figure(n, tickerChoice):
     #make and plot stock's last closing price
     fig = makeCurrentPrice(fig, stockDF)
 
-    #make and plot stock's resistance/support values
-    fig = makeLevels(fig, stockDF)
+    #make and plot stock's resistance/support values using fibonacci retracement
+    fig = makeFibLevels(max, low, fig, stockDF)
 
     
     return fig
