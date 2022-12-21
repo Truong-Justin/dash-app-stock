@@ -1,11 +1,11 @@
 # Python Stock Dashboard
 
 
-##Project Description
+## Project Description
 This web application was made using Python and the Dash framework. OHLC (Open/High/Low/Close) values are obtained using the yfinance API that interfaces with the Yahoo Finance! website. This project was intended to display relevant stock information to a user, without requiring the user to go through a complicated setup process. When the web application is accessed by the user, they have access to: common standard-moving-averages, resistance/support levels that are derived using a fractal-based algorithm or a fibonacci-based algorithm depending on the selected timeframe.
 
 
-##How to run the web application
+## How to run the web application
 1. The first option is to visit the deployed web application via stockdash.justintruong.studio
     - This is the easiest option
 
@@ -18,14 +18,14 @@ This web application was made using Python and the Dash framework. OHLC (Open/Hi
     - The program will run within the local machine's web browser via http://127.0.0.1:8080/
 
 
-##How to  use the project
+## How to  use the project
 
 
 
-##Test Cases
+## Test Cases
 
 
 
-##Credits
+## Credits
 
 
