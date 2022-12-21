@@ -6,7 +6,7 @@ This web application was made using Python and the Dash framework. OHLC (Open/Hi
 
 
 ## How to run the web application
-1. The first option is to visit the [deployed web application](stockdash.justintruong.studio).
+1. The first option is to visit the [deployed web application](https://stockdash.justintruong.studio).
     - This is the easiest option.
 
 2. The second option involves installing the application onto a local machine.
