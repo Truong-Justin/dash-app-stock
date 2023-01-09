@@ -2,7 +2,7 @@
 
 
 ## Project Description
-This web application was made using Python and the Dash framework. OHLC (Open/High/Low/Close) values are obtained using the yfinance API that interfaces with the Yahoo Finance! website. This project was intended to display relevant stock information to a user, without requiring the user to go through a complicated setup process. When the web application is accessed by the user, they have access to: common standard-moving-averages, MACD and RSI indicators, volume, and resistance/support levels that are derived using a fractal-based algorithm or a fibonacci-based algorithm depending on the selected timeframe.
+This web application was made using Python and the Dash framework. OHLC (Open/High/Low/Close) values are obtained using the yfinance API that interfaces with the Yahoo Finance! website. This project was intended to display relevant stock information to a user, without requiring the user to go through a complicated setup process. When the web application is accessed by the user, they have access to: common standard-moving-averages, MACD and RSI indicators, volume, and resistance/support levels that are derived using a fractal-based algorithm or a fibonacci-based algorithm depending on the selected timeframe. Amazon AWS Elastic Beanstalk was used along with AWS CodePipeline to build and deploy the web application, and a load balancer was added and configured to reroute incoming connections on http to https. 
 
 
 ## How to run the web application
@@ -14,7 +14,7 @@ This web application was made using Python and the Dash framework. OHLC (Open/Hi
     - Then, navigate to folder using the terminal/command prompt where the repository was saved to and install the dependencies within the requirements.txt file.
       - To install dependencies, enter **$ pip install -r requirements.txt** using the terminal/command prompt.
 
-    - Run the program either via the terminal/command prompt by typing **python3 app.py** or by running the program within your preferred IDE that supports Python. 
+    - Run the program either via the terminal/command prompt by typing **python3 application.py** or by running the program within your preferred IDE that supports Python. 
     - The program will run within the local machine's web browser via http://127.0.0.1:8080/
 
 
@@ -24,6 +24,11 @@ This web application was made using Python and the Dash framework. OHLC (Open/Hi
 3. Click the submit button to load the new stock graph.
 4. To display/hide moving averages and resistance/support values, click on the corresponding value within the interactive legend in the right hand corner.
 
+
+## Technology used
+- Python & Dash framework
+- Yfinance API that interfaces with Yahoo Finance!
+- AWS Elastic Beanstalk & AWS CodePipeline to build and deploy web app
 
 
 ## Planned additions
