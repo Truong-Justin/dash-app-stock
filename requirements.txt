@@ -24,5 +24,5 @@ six==1.16.0
 ta==0.10.1
 tenacity==8.0.1
 urllib3==1.26.10
-Werkzeug==2.2.0
+Werkzeug==2.2.3
 yfinance==0.1.67
